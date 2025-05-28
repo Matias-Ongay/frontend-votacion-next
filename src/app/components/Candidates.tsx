@@ -10,6 +10,9 @@ import { Button } from "@/ui/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/ui/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Badge } from "@/ui/ui/badge";
+import bullrichPic from "@/img/bullrich.jpg";
+import massa from "@/img/massa.jpg";
+import milei from "@/img/milei.jpg";
 
 // IMPORTANTE: Reemplazá estos valores por tu contrato real:
 const contractAddress = "0x211115f8127dd11ab77e84623fcc3c1953d4655d";
@@ -111,42 +114,42 @@ const contractABI = [
 const candidatesData = [
   {
     id: 0,
-    name: "Alex Johnson",
-    party: "Progressive Party",
-    image: "/placeholder.svg?height=400&width=400",
-    description: "Focused on environmental policies and social justice reform.",
+    name: "Javier Milei",
+    party: "La Libertad Avanza (LLA)",
+    image: milei,
+    description: "Economista libertario, conocido por su estilo provocador y propuestas radicales.",
     proposals: [
-      "Implement renewable energy initiatives",
-      "Reform healthcare system",
-      "Increase funding for public education",
+      "Dolarización de la economía.",
+      "Eliminación del Banco Central.",
+      "Reducción del gasto público en 15 puntos del PBI.",
     ],
-    experience: "8 years as City Council Member, 4 years as Mayor",
+    experience: "Diputado nacional por la Ciudad de Buenos Aires desde 2021.",
   },
   {
     id: 1,
-    name: "Morgan Smith",
-    party: "Innovation Alliance",
-    image: "/placeholder.svg?height=400&width=400",
-    description: "Advocate for technological advancement and economic growth.",
+    name: "Sergio Massa",
+    party: "Unión por la Patria (UxP)",
+    image: massa,
+    description: "Político peronista, actual Ministro de Economía al momento de las elecciones.",
     proposals: [
-      "Create tech innovation zones",
-      "Reduce business regulations",
-      "Invest in digital infrastructure",
+      "Estabilización económica y control de la inflación.",
+      "Impulso a la producción nacional.",
+      "Fortalecimiento del mercado interno.",
     ],
-    experience: "CEO of Tech Innovations Inc., Former Economic Advisor",
+    experience: "Ministro de Economía desde 2022; previamente, presidente de la Cámara de Diputados y jefe de Gabinete.",
   },
   {
     id: 2,
-    name: "Jamie Rivera",
-    party: "Unity Coalition",
-    image: "/placeholder.svg?height=400&width=400",
-    description: "Building bridges across communities with inclusive policies.",
+    name: "Patricia Bullrich",
+    party: "Juntos por el Cambio (JxC)",
+    image: bullrichPic,
+    description: "Dirigente del PRO, con una amplia trayectoria en la función pública.",
     proposals: [
-      "Expand affordable housing",
-      "Create community engagement programs",
-      "Reform immigration policies",
+      "Creación de una fuerza policial especializada en inteligencia criminal.",
+      "Implementación de un sistema bimonetario (peso y dólar)",
+      "Reforma del Estado para reducir ministerios y cargos políticos.",
     ],
-    experience: "Community Organizer, State Representative for 6 years",
+    experience: "Ministra de Seguridad (2015-2019) y Ministra de Trabajo (2000-2001).",
   },
 ];
 
@@ -235,7 +238,7 @@ export function Candidates() {
               </Badge>
             </div>
             <CardDescription className="flex items-center gap-1 mt-1">
-              <Users className="w-3 h-3" /> {(votes[candidate.id] ?? 0).toString()} votes
+              <Users className="w-3 h-3" /> {(votes[candidate.id] ?? 0).toString()} votos
             </CardDescription>
           </CardHeader>
           <CardContent className="p-4">
@@ -260,21 +263,21 @@ export function Candidates() {
             >
               <DialogTrigger asChild>
                 <Button variant="outline" className="flex-1" onClick={() => setSelectedCandidate(candidate.id)}>
-                  <Info className="w-4 h-4 mr-2" /> Details
+                  <Info className="w-4 h-4 mr-2" /> Detalles
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                   <DialogTitle>{candidate.name}</DialogTitle>
                   <DialogDescription>
-                    {candidate.party} • {(votes[candidate.id] ?? 0).toString()} votes
+                    {candidate.party} • {(votes[candidate.id] ?? 0).toString()} votos
                   </DialogDescription>
                 </DialogHeader>
 
                 <Tabs defaultValue="proposals" className="mt-4">
                   <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="proposals">Proposals</TabsTrigger>
-                    <TabsTrigger value="experience">Experience</TabsTrigger>
+                    <TabsTrigger value="proposals">Propuestas</TabsTrigger>
+                    <TabsTrigger value="experience">Experiencia</TabsTrigger>
                   </TabsList>
                   <TabsContent value="proposals" className="mt-4">
                     <ul className="pl-5 space-y-2 list-disc">
@@ -294,11 +297,11 @@ export function Candidates() {
                   <Button onClick={() => handleVote(candidate.id)} disabled={isVoting} className="w-full">
                     {isVoting ? (
                       <>
-                        <Clock className="w-4 h-4 mr-2 animate-spin" /> Processing
+                        <Clock className="w-4 h-4 mr-2 animate-spin" /> Votando..
                       </>
                     ) : (
                       <>
-                        <Vote className="w-4 h-4 mr-2" /> Vote for {candidate.name}
+                        <Vote className="w-4 h-4 mr-2" /> Votar por {candidate.name}
                       </>
                     )}
                   </Button>
@@ -313,7 +316,7 @@ export function Candidates() {
                 handleVote(candidate.id);
               }}
             >
-              <Vote className="w-4 h-4 mr-2" /> Vote
+              <Vote className="w-4 h-4 mr-2" /> Votar
             </Button>
           </CardFooter>
         </Card>

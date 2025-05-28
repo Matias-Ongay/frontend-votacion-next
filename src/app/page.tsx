@@ -9,9 +9,9 @@ export default function Home() {
       <div className="container px-4 py-8 mx-auto max-w-7xl">
         <header className="flex flex-col items-center justify-between gap-4 mb-8 md:flex-row">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Decentralized Voting</h1>
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Votación descentalizada</h1>
             <p className="mt-2 text-gray-500 dark:text-gray-400">
-              Vote for your favorite candidate on the Sepolia testnet
+              Vota a tu candidato favorito en esta votación descentralizada. Conecta tu billetera para participar.
             </p>
           </div>
           <ConnectWallet />
@@ -20,7 +20,7 @@ export default function Home() {
         <VotingStats />
 
         <section className="mt-12">
-          <h2 className="mb-6 text-2xl font-semibold">Candidates</h2>
+          <h2 className="mb-6 text-2xl font-semibold">Candidatos</h2>
           <Candidates />
         </section>
       </div>
